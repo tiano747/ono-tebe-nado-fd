@@ -1,1 +1,412 @@
-/* место для вашего кода */
+/* ═══════════════════════════════════════════
+   БАЗОВЫЕ НАСТРОЙКИ
+═══════════════════════════════════════════ */
+
+:root {
+  --font: 'Raleway', sans-serif;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --page-width: 1100px;
+  --page-padding: 50px;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+/* ── ПЕРЕИСПОЛЬЗУЕМЫЙ ОВЕРЛЕЙ ── */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-overlay);
+  z-index: 1;
+}
+
+/* ── БЛОК АДРЕСА (переиспользуется в шапке и подвале) ── */
+
+.address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.address a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ═══════════════════════════════════════════
+   ШАПКА
+═══════════════════════════════════════════ */
+
+.header {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 40px var(--page-padding);
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Меню */
+
+.header__menu {
+  align-self: end;
+}
+
+.header__links-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  list-style: circle;
+  padding-left: 16px;
+}
+
+.header__links-list-item {
+  display: list-item;
+  list-style: circle;
+}
+
+.header__links-list-item_no-bullet {
+  list-style: none;
+}
+
+.header__link {
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.header__link_active {
+  text-decoration: none;
+}
+
+/* Логотип */
+
+.header__logo {
+  display: block;
+  width: 148px;
+}
+
+.header__logo-image {
+  width: 100%;
+}
+
+/* Адрес в шапке */
+
+.header__address {
+  justify-self: end;
+  max-width: 260px;
+}
+
+/* ═══════════════════════════════════════════
+   ОБЛОЖКА (COVER)
+═══════════════════════════════════════════ */
+
+.cover {
+  position: relative;
+  min-height: 757px;
+  background-image: url('https://www.figma.com/api/mcp/asset/903088df-9ba4-4fe0-90f2-5578f915fec6');
+  background-size: 125% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 165px var(--page-padding) 0;
+}
+
+/* Заголовок */
+
+.cover__title {
+  position: relative;
+  z-index: 2;
+  font-size: 100px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-white);
+  letter-spacing: 30px;
+  line-height: 1.15;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.aligned-text {
+  display: block;
+}
+
+.aligned-text_left  { text-align: left; }
+.aligned-text_center { text-align: center; }
+.aligned-text_right { text-align: right; }
+
+.no-letter-spacing { letter-spacing: 0; }
+
+/* Описание и кнопка */
+
+.cover__description {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0 40px;
+}
+
+.cover__description-text {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--color-white);
+  text-transform: uppercase;
+  word-spacing: 16px;
+}
+
+.bet-button {
+  border: 1px solid var(--color-white);
+  padding: 11px 30px;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-white);
+  text-transform: uppercase;
+  background: transparent;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  transition: background-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.bet-button:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* ═══════════════════════════════════════════
+   СЕКЦИЯ ЛОТОВ
+═══════════════════════════════════════════ */
+
+.lots {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 80px var(--page-padding) 60px;
+}
+
+.lots__heading {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+/* Список карточек */
+
+.lots__card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.lots__card-list-item {
+  width: calc((100% - 48px) / 3);
+  min-height: 596px;
+}
+
+/* Ссылка-обёртка карточки */
+
+.card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+/* Сама карточка */
+
+.card {
+  position: relative;
+  height: 100%;
+  min-height: 596px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.card_type_film {
+  background-image: url('https://www.figma.com/api/mcp/asset/3f4d069a-3e2b-439b-bb8e-569812c81115');
+}
+
+.card_type_book {
+  background-image: url('https://www.figma.com/api/mcp/asset/18688a8a-4ada-4b45-945b-919ecda196ce');
+}
+
+.card_type_picture {
+  background-image: url('https://www.figma.com/api/mcp/asset/858f6753-9f58-4442-9373-ce8da6bf589c');
+}
+
+.card__title {
+  position: relative;
+  z-index: 2;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 3px;
+  line-height: 1.2;
+  padding: 48px 40px 0;
+}
+
+.card__text {
+  position: relative;
+  z-index: 2;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-white);
+  line-height: 1.2;
+  padding: 24px 40px;
+  margin-top: auto;
+}
+
+/* Ссылка «Посмотреть больше» */
+
+.lots__look-more-link {
+  display: inline-block;
+  margin-top: 32px;
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ═══════════════════════════════════════════
+   СЕКЦИЯ «ОБ АУКЦИОНЕ»
+═══════════════════════════════════════════ */
+
+.about {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 60px var(--page-padding);
+  display: grid;
+  grid-template-columns: calc((100% - 48px) / 3) 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about__column {
+  /* базовый блок-колонка */
+}
+
+/* Контейнер логотипа */
+
+.about__logo {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.about__logo-image {
+  width: 148px;
+}
+
+/* Заголовок и текст */
+
+.about__title {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about__text p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/* ═══════════════════════════════════════════
+   ПОДВАЛ (FOOTER)
+═══════════════════════════════════════════ */
+
+.footer {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 24px var(--page-padding);
+  border-top: 1px solid #e0e0e0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+  gap: 24px;
+}
+
+/* Меню подвала */
+
+.footer__menu {
+  display: flex;
+  justify-content: center;
+}
+
+.footer__menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer__menu-list-item {
+  /* каждый пункт */
+}
+
+.footer__menu-link {
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer__menu-link_active {
+  text-decoration: none;
+}
+
+/* Список соцсетей */
+
+.footer__social-list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer__social-link {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+.footer__social-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

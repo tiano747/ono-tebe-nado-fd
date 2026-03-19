@@ -2,6 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -27,12 +29,31 @@ blockquote {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 img {
+  display: block;
   width: 100%;
 }
 
 button {
   font: inherit;
+}
+
+address {
+  all: inherit
+}
+
+ul,
+ol {
+  list-style: none;
+}
+ 
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }

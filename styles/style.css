@@ -1,24 +1,22 @@
-/* ═══════════════════════════════════════════
-   БАЗОВЫЕ НАСТРОЙКИ
-═══════════════════════════════════════════ */
-
 :root {
-  --font: 'Raleway', sans-serif;
-  --color-black: #000;
-  --color-white: #fff;
+  --font-main: 'Raleway', sans-serif;
+  --color-black: #000000;
+  --color-white: #ffffff;
   --color-overlay: rgba(0, 0, 0, 0.6);
-  --page-width: 1100px;
+
+  --page-max-width: 1100px;
   --page-padding: 50px;
+
 }
 
 body {
-  font-family: var(--font);
+  font-family: var(--font-main);
   color: var(--color-black);
   background-color: var(--color-white);
 }
 
-/* ── ПЕРЕИСПОЛЬЗУЕМЫЙ ОВЕРЛЕЙ ── */
 
+/* Оверлей — используется в cover и карточках */
 .overlay {
   position: absolute;
   inset: 0;
@@ -26,7 +24,7 @@ body {
   z-index: 1;
 }
 
-/* ── БЛОК АДРЕСА (переиспользуется в шапке и подвале) ── */
+/* Блок адреса — переиспользуется в шапке и подвале */
 
 .address {
   display: flex;
@@ -41,25 +39,20 @@ body {
   text-underline-offset: 3px;
 }
 
-/* ═══════════════════════════════════════════
-   ШАПКА
-═══════════════════════════════════════════ */
+
+/* ШАПКА */
 
 .header {
-  max-width: var(--page-width);
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 40px var(--page-padding);
+  padding: 38px var(--page-padding);
   display: grid;
   grid-template-columns: 1fr min-content 1fr;
   align-items: center;
-  gap: 24px;
+  column-gap: 24px;
 }
 
 /* Меню */
-
-.header__menu {
-  align-self: end;
-}
 
 .header__links-list {
   display: flex;
@@ -67,12 +60,11 @@ body {
   align-items: center;
   gap: 24px;
   list-style: circle;
-  padding-left: 16px;
+  padding-left: 20px;
 }
 
 .header__links-list-item {
   display: list-item;
-  list-style: circle;
 }
 
 .header__links-list-item_no-bullet {
@@ -109,58 +101,64 @@ body {
   max-width: 260px;
 }
 
-/* ═══════════════════════════════════════════
-   ОБЛОЖКА (COVER)
-═══════════════════════════════════════════ */
+/* ОБЛОЖКА */
 
 .cover {
   position: relative;
   min-height: 757px;
-  background-image: url('https://www.figma.com/api/mcp/asset/903088df-9ba4-4fe0-90f2-5578f915fec6');
-  background-size: 125% auto;
-  background-position: center top;
+
+  background-image: url('../images/cover.jpg');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 165px var(--page-padding) 0;
+  padding: 165px var(--page-padding) 42px;
 }
 
-/* Заголовок */
+/* Заголовок h1 */
 
 .cover__title {
   position: relative;
   z-index: 2;
   font-size: 100px;
   font-weight: 700;
-  text-transform: uppercase;
   color: var(--color-white);
+  text-transform: uppercase;
   letter-spacing: 30px;
   line-height: 1.15;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
 }
 
 .aligned-text {
   display: block;
 }
 
-.aligned-text_left  { text-align: left; }
-.aligned-text_center { text-align: center; }
-.aligned-text_right { text-align: right; }
+.aligned-text_left {
+    text-align: left; 
+}
 
-.no-letter-spacing { letter-spacing: 0; }
+.aligned-text_center {
+    text-align: center;
+}
 
-/* Описание и кнопка */
+.aligned-text_right {
+    text-align: right;
+}
+
+.no-letter-spacing {
+  letter-spacing: 0;
+}
+
+/* Блок описания и кнопки */
 
 .cover__description {
   position: relative;
   z-index: 2;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 0 40px;
 }
 
 .cover__description-text {
@@ -168,21 +166,24 @@ body {
   font-weight: 400;
   color: var(--color-white);
   text-transform: uppercase;
-  word-spacing: 16px;
+  word-spacing: 22px;
 }
+
+/* Кнопка «Сделать ставку» */
 
 .bet-button {
   border: 1px solid var(--color-white);
   padding: 11px 30px;
+  background: transparent;
   font-size: 22px;
   font-weight: 500;
+  font-family: var(--font-main);
   color: var(--color-white);
   text-transform: uppercase;
-  background: transparent;
-  white-space: nowrap;
   letter-spacing: 1px;
-  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
   flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .bet-button:hover {
@@ -190,12 +191,11 @@ body {
   color: var(--color-black);
 }
 
-/* ═══════════════════════════════════════════
-   СЕКЦИЯ ЛОТОВ
-═══════════════════════════════════════════ */
+
+/* СЕКЦИЯ ЛОТОВ */
 
 .lots {
-  max-width: var(--page-width);
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 80px var(--page-padding) 60px;
 }
@@ -220,38 +220,35 @@ body {
   min-height: 596px;
 }
 
-/* Ссылка-обёртка карточки */
-
 .card-link {
   display: block;
   height: 100%;
   text-decoration: none;
 }
 
-/* Сама карточка */
+/* Карточка (article) */
 
 .card {
   position: relative;
   height: 100%;
   min-height: 596px;
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
 }
 
 .card_type_film {
-  background-image: url('https://www.figma.com/api/mcp/asset/3f4d069a-3e2b-439b-bb8e-569812c81115');
+  background-image: url('../images/card-lot-01.jpg');
 }
 
 .card_type_book {
-  background-image: url('https://www.figma.com/api/mcp/asset/18688a8a-4ada-4b45-945b-919ecda196ce');
+  background-image: url('../images/card-lot-02.jpg');
 }
 
 .card_type_picture {
-  background-image: url('https://www.figma.com/api/mcp/asset/858f6753-9f58-4442-9373-ce8da6bf589c');
+  background-image: url('../images/card-lot-03.jpg');
 }
 
 .card__title {
@@ -279,8 +276,6 @@ body {
   margin-top: auto;
 }
 
-/* Ссылка «Посмотреть больше» */
-
 .lots__look-more-link {
   display: inline-block;
   margin-top: 32px;
@@ -290,12 +285,11 @@ body {
   text-underline-offset: 3px;
 }
 
-/* ═══════════════════════════════════════════
-   СЕКЦИЯ «ОБ АУКЦИОНЕ»
-═══════════════════════════════════════════ */
+
+/* СЕКЦИЯ «ОБ АУКЦИОНЕ» */
 
 .about {
-  max-width: var(--page-width);
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 60px var(--page-padding);
   display: grid;
@@ -304,28 +298,23 @@ body {
   align-items: start;
 }
 
-.about__column {
-  /* базовый блок-колонка */
-}
-
-/* Контейнер логотипа */
 
 .about__logo {
   width: 240px;
   height: 240px;
   border-radius: 50%;
   background-color: var(--color-black);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   margin: 0 auto;
 }
 
 .about__logo-image {
   width: 148px;
 }
-
-/* Заголовок и текст */
 
 .about__title {
   font-size: 40px;
@@ -346,22 +335,21 @@ body {
   line-height: 1.35;
 }
 
-/* ═══════════════════════════════════════════
-   ПОДВАЛ (FOOTER)
-═══════════════════════════════════════════ */
+
+/* ПОДВАЛ */
 
 .footer {
-  max-width: var(--page-width);
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 24px var(--page-padding);
-  border-top: 1px solid #e0e0e0;
+  padding: 28px var(--page-padding);
+  border-top: 1px solid #d9d9d9;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   align-items: start;
   gap: 24px;
 }
 
-/* Меню подвала */
+/* Меню подвала  */
 
 .footer__menu {
   display: flex;
@@ -375,10 +363,6 @@ body {
   gap: 4px;
 }
 
-.footer__menu-list-item {
-  /* каждый пункт */
-}
-
 .footer__menu-link {
   font-size: 18px;
   font-weight: 400;
@@ -390,7 +374,7 @@ body {
   text-decoration: none;
 }
 
-/* Список соцсетей */
+/* Соцсети */
 
 .footer__social-list {
   display: flex;
